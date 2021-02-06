@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>JavaScript Form Validation using a sample registration form</title>
+<meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
+<meta name="description" content="This document is an example of JavaScript Form Validation using a sample registration form. " />
+<!-- <style>
+  .valid {
+    color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10004;";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+} -->
+
+<!-- </style> -->
+</head>
+<body>
+  <p id="error"></p>
+  <form id = "form" name="myform" action="" method="post"  onsubmit="return FormValidation();" >
+    Email: <input type="text" id="email" name = "email">
+
+    password: <input type="text" id="pass1" name = "password" class="invalid">
+
+    retype-password: <input type="text" id="pass2">
+
+
+    <button id="submit" type="submit"> garrab keda yarab te4taghal 😞 </button>
+    </form>
+
+   
+
+
+<script>
+
+form.addEventListener('submit', (e) => {
+     e.preventDefault() ;
+      })
+
+
+function FormValidation(){
+
+
+  var upperCaseLetters = /[A-Z]/g;
+  var lowerCaseLetters = /[a-z]/g;
+  var numbers = /[0-9]/g;
+
+
+    //First Name Validation 
+    var pass1=document.getElementById('pass1').value;
+    var pass2=document.getElementById('pass2').value;
+   const email = document.getElementById('email').value;
+   const form = document.getElementById('form').value;
+
+   
+
+   if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(myform.email.value)){
+        document.getElementById('email').style.borderColor = "green";
+
+
+       }
+       else{
+        alert('email format is not correct');
+        document.getElementById('email').style.borderColor = "red";
+
+        return false;
+
+
+    }
+
+    if(email == ""){
+        alert('Please Enter email address First');
+        document.getElementById('email').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('email').style.borderColor = "green";
+    }
+
+    if(pass1 == ""){
+        alert('Please Enter The Password First');
+        document.getElementById('pass1').style.borderColor = "red";
+        return false;
+    }
+    else
+    {
+        document.getElementById('pass1').style.borderColor = "green";
+    }
+
+
+    
+    if(pass1.length <=10){
+        alert('Your Name is To Short');
+        document.getElementById('pass1').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('pass1').style.borderColor = "green";
+    }
+
+    if( !(upperCaseLetters.test(document.getElementById("pass1").value)) ) {  
+      alert('You Should insert Capital letters');
+        document.getElementById('pass1').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('pass1').style.borderColor = "green";
+    }
+
+    if( !lowerCaseLetters.test(document.getElementById("pass1").value) ) {  
+      alert('You Should insert small letters');
+        document.getElementById('pass1').style.borderColor = "red";
+        return false;
+    }else{
+        document.getElementById('pass1').style.borderColor = "green";
+    }
+
+    if( document.getElementById("pass2").value !== document.getElementById("pass1").value ) {  
+      alert('the password doesnt match');
+        document.getElementById('pass2').style.borderColor = "red";
+        return false;
+    }else{
+      alert('alhamdu lillah you achieved the requirements');
+      document.getElementById("submit").innerHTML = "alhamdulillah 😀";
+
+    }
+
+       
+
+  } 
+
+
+// const email = document.getElementById('email')
+// const password = document.getElementById('pass1')
+// const form = document.getElementById('form')
+// const errorElement = document.getElementById('error')
+// var upperCaseLetters = /[A-Z]/g;
+// var lowerCaseLetters = /[a-z]/g;
+// var numbers = /[0-9]/g;
+
+
+
+
+// form.addEventListener('submit', (e) => {
+//   let messages = []
+//   if (email.value === '' || email.value == null) {
+//     messages.push('Email is required');
+//   }
+
+//   if (password.value.length <= 6) {
+//     messages.push('Password must be longer than 6 characters');
+//   }
+
+//   if (password.value.length >= 20) {
+//     messages.push('Password must be less than 20 characters');
+//   }
+
+//   if (password.value === 'pass1') {
+//     messages.push('Password cannot be password');
+//   }
+
+//   if (!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(myform.email.value)))
+//   {
+//         messages.push('You have entered an invalid email address!')
+
+//   }
+
+//   if(password.value.match(upperCaseLetters)) {  
+//     password.classList.remove("invalid");
+//     password.classList.add("valid");
+//     messages.push('the password must contain upperCae letters!');
+
+//   } 
+
+
+//   if (messages.length > 0) {
+
+//     errorElement.innerText = messages.join(', ')
+
+//     document.getElementById("submit").innerHTML = "alhamdulillah 😀";
+//     e.preventDefault()
+
+//   }
+// }
+// )
+// password.onkeyup = function() {
+//   // Validate lowercase letters
+  
+
+ 
+
+
+  
+//   if(password.value.match(lowerCaseLetters)) {  
+//     password.classList.remove("invalid");
+//     password.classList.add("valid");
+
+// }
+
+//   if(password.value.match(numbers)) {  
+//     password.classList.remove("invalid");
+//     password.classList.add("valid");
+//   } else {
+//     password.classList.remove("valid");
+//     password.classList.add("invalid");
+//   }
+
+//   if(password.value.length >= 8) {
+//     password.classList.remove("invalid");
+//     password.classList.add("valid");
+//   } else {
+//     password.classList.remove("valid");
+//     password.classList.add("invalid");
+//   }
+
+// }
+</script>
+</body>
+</html>
