@@ -6,7 +6,6 @@ function first_mogab_outside($arr){
     $arrloop = $arr;
    global $mogab ;
    $mogab = array();
-
    global $saleb ;
    $saleb = array();
     

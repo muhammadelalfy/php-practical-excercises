@@ -25,7 +25,7 @@
 <body>
   <p id="error"></p>
   <form id = "form" name="myform" action="" method="post"  onsubmit="return FormValidation();" >
-    Email: <input type="text" id="email" name = "email">
+    Email: <input type="text" id="email" name = "email" type="email">
 
     password: <input type="text" id="pass1" name = "password" class="invalid">
 
@@ -51,6 +51,7 @@ function FormValidation(){
   var upperCaseLetters = /[A-Z]/g;
   var lowerCaseLetters = /[a-z]/g;
   var numbers = /[0-9]/g;
+  var reg = /(?=.*[!@#\$%\^&])/g;
 
 
     //First Name Validation 
@@ -58,10 +59,27 @@ function FormValidation(){
     var pass2=document.getElementById('pass2').value;
    const email = document.getElementById('email').value;
    const form = document.getElementById('form').value;
+   const re = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+
+   var passformat =  /^(?!.*\s).{10,15}$/;
 
    
+   if(myform.email.value.match(re))
+      {
+        document.getElementById('email').style.borderColor = "green";
 
-   if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(myform.email.value)){
+      }
+      else
+      {
+        document.getElementById('email').style.borderColor = "red";
+
+      alert("You have entered an invalid email address!");
+
+      return false;
+      }
+
+
+   if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(myform.email.value) && /com/.test(myform.email.value) ){
         document.getElementById('email').style.borderColor = "green";
 
 
@@ -96,7 +114,7 @@ function FormValidation(){
 
     
     if(pass1.length <=10){
-        alert('Your Name is To Short');
+        alert('Your password is To Short');
         document.getElementById('pass1').style.borderColor = "red";
         return false;
     }else{
@@ -119,6 +137,23 @@ function FormValidation(){
         document.getElementById('pass1').style.borderColor = "green";
     }
 
+
+
+    if(  reg.test(myform.password.value))
+      {
+        document.getElementById('pass1').style.borderColor = "green";
+
+      }
+      else
+      {
+        document.getElementById('pass1').style.borderColor = "red";
+
+      alert("You should enter an operator ");
+
+      return false;
+      }
+
+
     if( document.getElementById("pass2").value !== document.getElementById("pass1").value ) {  
       alert('the password doesnt match');
         document.getElementById('pass2').style.borderColor = "red";
@@ -128,6 +163,8 @@ function FormValidation(){
       document.getElementById("submit").innerHTML = "alhamdulillah 😀";
 
     }
+
+
 
        
 
